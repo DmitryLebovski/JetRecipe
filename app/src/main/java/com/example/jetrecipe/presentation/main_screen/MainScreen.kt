@@ -13,18 +13,28 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.jetrecipe.domain.model.User
 import com.example.jetrecipe.utils.Routes.ACCOUNT_SCREEN
 
 @Composable
 fun MainScreen(
     navController: NavController,
+    user: User?
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Main Screen", style = MaterialTheme.typography.bodySmall)
+        Spacer(modifier = Modifier.height(100.dp))
+        Text(
+            text = "Main Screen",
+            style = MaterialTheme.typography.bodyLarge
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+
+        user?.let {
+            Text(text = "Добро пожаловать, ${it.username}")
+        }
 
         Spacer(modifier = Modifier.height(16.dp))
 
