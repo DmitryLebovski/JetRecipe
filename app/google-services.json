@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "256142068012",
+    "project_id": "jetcomcook-f607d",
+    "storage_bucket": "jetcomcook-f607d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:256142068012:android:b96ed10efa1fea6c9f4489",
+        "android_client_info": {
+          "package_name": "com.example.jetrecipe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "256142068012-9ijqt99kffn62ocrh5i4sb11fsrunevm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNkeOTYaczJcplDAT8XiarMOMQUjHtvtY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "256142068012-9ijqt99kffn62ocrh5i4sb11fsrunevm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
