@@ -1,4 +1,4 @@
-package com.nikitacherenkov.newsapp.presentation.tools
+package com.example.jetrecipe.tools
 
 import android.annotation.SuppressLint
 import androidx.compose.animation.core.animateFloat
@@ -10,7 +10,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.structuralEqualityPolicy
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.geometry.Offset

@@ -1,4 +1,4 @@
-package com.nikitacherenkov.newsapp.presentation.reusable_components
+package com.example.jetrecipe.reusable_components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

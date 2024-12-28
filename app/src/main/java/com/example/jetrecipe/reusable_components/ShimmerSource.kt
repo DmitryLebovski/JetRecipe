@@ -1,4 +1,4 @@
-package com.nikitacherenkov.newsapp.presentation.reusable_components
+package com.example.jetrecipe.reusable_components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
-import com.nikitacherenkov.newsapp.presentation.tools.shimmerEffect
+import com.example.jetrecipe.tools.shimmerEffect
 
 @Composable
 fun ShimmerSource(){
