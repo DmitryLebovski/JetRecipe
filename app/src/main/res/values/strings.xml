@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">JetRecipe</string>
+    <string name="sign_out">Выйти</string>
+    <string name="greeting_text">JetRecipe</string>
+    <string name="greeting_subtext">Кастомное пет-приложение для поиска рецептов</string>
+    <string name="web_client_id">256142068012-9ijqt99kffn62ocrh5i4sb11fsrunevm.apps.googleusercontent.com</string>
 </resources>
