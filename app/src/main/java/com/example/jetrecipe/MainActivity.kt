@@ -2,7 +2,6 @@ package com.example.jetrecipe
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
@@ -18,9 +17,7 @@ import androidx.navigation.compose.composable
 import com.example.jetrecipe.domain.model.User
 import com.example.jetrecipe.presentation.login.LoginScreen
 import com.example.jetrecipe.presentation.main_screen.MainScreen
-import com.example.jetrecipe.presentation.profile.ProfileScreen
 import com.example.jetrecipe.ui.theme.JetRecipeTheme
-import com.example.jetrecipe.utils.Routes.ACCOUNT_SCREEN
 import com.example.jetrecipe.utils.Routes.LOGIN_SCREEN
 import com.example.jetrecipe.utils.Routes.MAIN_SCREEN
 import com.google.firebase.auth.ktx.auth
@@ -28,9 +25,8 @@ import com.google.firebase.ktx.Firebase
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-
+        super.onCreate(savedInstanceState)
         setContent {
             val currentFirebaseUser = Firebase.auth.currentUser
             val startDestination = if (currentFirebaseUser == null) {
@@ -74,11 +70,6 @@ class MainActivity : ComponentActivity() {
                         composable(MAIN_SCREEN) {
                             MainScreen(
                                 navController = navController,
-                                user = userState.value
-                            )
-                        }
-                        composable(ACCOUNT_SCREEN) {
-                            ProfileScreen(
                                 user = userState.value,
                                 onSignOut = {
                                     Firebase.auth.signOut()
