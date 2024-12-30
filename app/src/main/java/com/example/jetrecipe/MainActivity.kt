@@ -26,7 +26,9 @@ import com.example.jetrecipe.utils.Routes.LOGIN_SCREEN
 import com.example.jetrecipe.utils.Routes.MAIN_SCREEN
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()

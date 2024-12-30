@@ -1,6 +1,7 @@
 package com.example.jetrecipe.tools
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
@@ -22,6 +23,13 @@ fun BottomBar(navController: NavController) {
         NavigationBarItem(
             icon = { Icon(Icons.Default.Search, contentDescription = "Settings") },
             label = { Text("Поиск") },
+            selected = false,
+            enabled = false,
+            onClick = { }
+        )
+        NavigationBarItem(
+            icon = { Icon(Icons.Default.Favorite, contentDescription = "Favorite") },
+            label = { Text("Избранное") },
             selected = false,
             enabled = false,
             onClick = { }
