@@ -1,25 +1,32 @@
 package com.example.jetrecipe.reusable_components
 
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
-import com.example.jetrecipe.tools.shimmerEffect
 
 @Composable
-fun ShimmerText(){
-    Box(
+fun ShimmerMealCard() {
+    Column(
         modifier = Modifier
-            .height(25.dp)
+            .width(150.dp)
+            .padding(16.dp)
+    ) {
+        ShimmerImage(modifier = Modifier
             .fillMaxWidth()
-            .padding(start = 5.dp, end = 5.dp)
-            .clip(RoundedCornerShape(12.dp))
-            .shimmerEffect()
-    )
+            .height(100.dp)
+            .clip(MaterialTheme.shapes.medium)
+        )
+
+        Spacer(Modifier.padding(top = 12.dp))
+
+        ShimmerText()
+    }
 }

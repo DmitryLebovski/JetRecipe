@@ -11,7 +11,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import com.example.jetrecipe.domain.model.Meal
 
@@ -32,7 +35,10 @@ fun MealCard(meal: Meal) {
         )
         Text(
             text = meal.meal,
-            style = MaterialTheme.typography.bodyLarge,
+            textAlign = TextAlign.Center,
+            fontSize = 12.sp,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
             modifier = Modifier.padding(top = 8.dp)
         )
     }

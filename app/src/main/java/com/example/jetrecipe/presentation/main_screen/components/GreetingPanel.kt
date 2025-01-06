@@ -28,19 +28,14 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberAsyncImagePainter
 import com.example.jetrecipe.R
 import com.example.jetrecipe.domain.model.User
-import com.example.jetrecipe.presentation.main_screen.MainScreen
-import com.example.jetrecipe.utils.Routes.ACCOUNT_SCREEN
 
 @Composable
 fun GreetingPanel(
@@ -57,7 +52,7 @@ fun GreetingPanel(
                     .padding(
                         top = WindowInsets.statusBars
                             .asPaddingValues()
-                            .calculateTopPadding() + 10.dp,
+                            .calculateTopPadding(),
                         start = 16.dp,
                         end = 16.dp
                     ),
@@ -92,7 +87,7 @@ fun GreetingPanel(
                 fontFamily = FontFamily(Font(R.font.montserrat)),
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(start = 16.dp, bottom = 16.dp)
+                modifier = Modifier.padding(start = 16.dp)
             )
         }
     }
