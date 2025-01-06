@@ -1,8 +1,10 @@
 package com.example.jetrecipe.data.remote.repository
 
 import com.example.jetrecipe.data.remote.MealApi
+import com.example.jetrecipe.data.remote.toDomain
 import com.example.jetrecipe.domain.model.Category
 import com.example.jetrecipe.domain.model.Meal
+import com.example.jetrecipe.domain.model.MealDetail
 import com.example.jetrecipe.domain.repository.MealRepository
 import javax.inject.Inject
 
@@ -12,7 +14,7 @@ class MealRepositoryImpl @Inject constructor(
     override suspend fun getCategories(): List<Category> {
         return api.getCategories().categories.map { dto ->
             Category(
-                id = dto.idCategory.toInt(),
+                idCategory = dto.idCategory.toInt(),
                 category = dto.strCategory,
                 categoryPictureURL = dto.strCategoryThumb,
                 categoryDescription = dto.strCategoryDescription
@@ -28,5 +30,13 @@ class MealRepositoryImpl @Inject constructor(
                 mealID = dto.idMeal.toInt()
             )
         }
+    }
+
+    override suspend fun getMealDetails(id: Int): MealDetail {
+        val mealResponse = api.getMealDetails(id)
+        val mealDto = mealResponse.meals?.firstOrNull()
+            ?: error("Meal not found")
+
+        return mealDto.toDomain()
     }
 }

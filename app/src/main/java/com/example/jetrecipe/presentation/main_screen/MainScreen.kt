@@ -39,14 +39,15 @@ import androidx.navigation.NavController
 import com.example.jetrecipe.R
 import com.example.jetrecipe.domain.model.User
 import com.example.jetrecipe.presentation.main_screen.components.GreetingPanel
+import com.example.jetrecipe.presentation.meal_detail.MealDetailScreen
 import com.example.jetrecipe.presentation.profile.ProfileScreen
 import com.example.jetrecipe.reusable_components.MealCard
 import com.example.jetrecipe.reusable_components.ShimmerGreetingsCard
 import com.example.jetrecipe.reusable_components.ShimmerMealRow
+import com.example.jetrecipe.utils.ModalContentType
 import com.example.jetrecipe.utils.RecipeUiState
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(
     navController: NavController,
@@ -74,6 +75,8 @@ fun ResultScreen(
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
     val scope = rememberCoroutineScope()
     var isSheetOpen by remember { mutableStateOf(false) }
+    var sheetContentType by remember { mutableStateOf<ModalContentType>(ModalContentType.Profile) }
+    var selectedMeal by remember { mutableStateOf<Int?>(null) }
 
     val categories by viewModel.categories.collectAsState()
     val mealsByCategory by viewModel.mealsByCategory.collectAsState()
@@ -84,16 +87,25 @@ fun ResultScreen(
             onDismissRequest = { isSheetOpen = false },
             sheetState = sheetState
         ) {
-            ProfileScreen(
-                user = user,
-                onSignOut = {
-                    scope.launch {
-                        sheetState.hide()
-                        isSheetOpen = false
-                    }
-                    onSignOut()
+            when (sheetContentType) {
+                ModalContentType.Profile -> {
+                    ProfileScreen(
+                        user = user,
+                        onSignOut = {
+                            scope.launch {
+                                sheetState.hide()
+                                isSheetOpen = false
+                            }
+                            onSignOut()
+                        }
+                    )
                 }
-            )
+                ModalContentType.MealDetail -> {
+                    selectedMeal?.let { id ->
+                        MealDetailScreen(mealID = id)
+                    }
+                }
+            }
         }
     }
 
@@ -104,8 +116,8 @@ fun ResultScreen(
         item {
             GreetingPanel(navController, user, onIconClick = {
                 scope.launch {
-                    isSheetOpen = true
-                }
+                    sheetContentType = ModalContentType.Profile
+                    isSheetOpen = true                }
             })
         }
 
@@ -146,7 +158,16 @@ fun ResultScreen(
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 items(mealsByCategory[category.category] ?: emptyList()) { meal ->
-                    MealCard(meal)
+                    MealCard(
+                        meal,
+                        onClick = {
+                            scope.launch {
+                                selectedMeal = meal.mealID
+                                sheetContentType = ModalContentType.MealDetail
+                                isSheetOpen = true
+                            }
+                        }
+                    )
                 }
             }
         }

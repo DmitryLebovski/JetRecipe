@@ -9,7 +9,6 @@ import androidx.compose.ui.platform.LocalContext
 fun ShowToastMessage(message: String?) {
     val context = LocalContext.current
 
-    // Используем LaunchedEffect для показа Toast
     LaunchedEffect(message) {
         message?.let {
             Toast.makeText(context, it, Toast.LENGTH_SHORT).show()

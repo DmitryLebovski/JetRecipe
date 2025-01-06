@@ -1,9 +1,17 @@
 <resources>
     <string name="app_name">JetRecipe</string>
-    <string name="sign_out">Выход</string>
+    <string name="sign_out">Выйти из аккаунта</string>
     <string name="greeting_text">JetRecipe</string>
     <string name="greeting_subtext">Кастомное пет-приложение для поиска рецептов</string>
     <string name="loading_failed">Нет подключения к интернету</string>
     <string name="greeting_warning">Увы API themealdb.com не работает в РФ, поэтому для корректной работы понадобится VPN</string>
     <string name="web_client_id">256142068012-9ijqt99kffn62ocrh5i4sb11fsrunevm.apps.googleusercontent.com</string>
+    <string name="category">Категория: %1$s</string>
+    <string name="area">Зона: %1$s</string>
+    <string name="instruction">Инструкция:</string>
+    <string name="ingredients">Ингредиенты:</string>
+    <string name="youtube_link">Ссылка Youtube:</string>
+    <string name="empty_user_data">Данные о пользователе отсутствуют</string>
+    <string name="search">Поиск</string>
+    <string name="favorite">Избранное</string>
 </resources>

@@ -9,7 +9,9 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
+import com.example.jetrecipe.R
 import com.example.jetrecipe.utils.Routes.MAIN_SCREEN
 
 @Composable
@@ -22,14 +24,14 @@ fun BottomBar(navController: NavController) {
         )
         NavigationBarItem(
             icon = { Icon(Icons.Default.Search, contentDescription = "Settings") },
-            label = { Text("Поиск") },
+            label = { Text(stringResource(R.string.search)) },
             selected = false,
             enabled = false,
             onClick = { }
         )
         NavigationBarItem(
             icon = { Icon(Icons.Default.Favorite, contentDescription = "Favorite") },
-            label = { Text("Избранное") },
+            label = { Text(stringResource(R.string.favorite)) },
             selected = false,
             enabled = false,
             onClick = { }

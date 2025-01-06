@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
@@ -62,17 +63,15 @@ fun ProfileScreen(
             Spacer(modifier = Modifier.height(8.dp))
 
         } ?: run {
-            Text(text = "Данные о пользователе отсутствуют")
+            Text(text = stringResource(R.string.empty_user_data))
             Spacer(modifier = Modifier.height(8.dp))
         }
 
-        Button(onClick = {
-            Toast.makeText(context, "Выйти", Toast.LENGTH_SHORT).show()
-            onSignOut()
-        },
+        Button(
+            onClick = { onSignOut() },
             colors = ButtonDefaults.buttonColors(Color.Red)
         ) {
-            Text(text = "Выйти из аккаунта")
+            Text(text = stringResource(R.string.sign_out))
         }
     }
 }
