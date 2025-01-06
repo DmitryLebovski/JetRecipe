@@ -2,20 +2,17 @@ package com.example.jetrecipe.presentation.main_screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalBottomSheet
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.rememberModalBottomSheetState
@@ -38,7 +35,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.jetrecipe.R
 import com.example.jetrecipe.domain.model.User
@@ -46,8 +42,7 @@ import com.example.jetrecipe.presentation.main_screen.components.GreetingPanel
 import com.example.jetrecipe.presentation.profile.ProfileScreen
 import com.example.jetrecipe.reusable_components.MealCard
 import com.example.jetrecipe.reusable_components.ShimmerGreetingsCard
-import com.example.jetrecipe.reusable_components.ShimmerMealCard
-import com.example.jetrecipe.reusable_components.ShimmerText
+import com.example.jetrecipe.reusable_components.ShimmerMealRow
 import com.example.jetrecipe.utils.RecipeUiState
 import kotlinx.coroutines.launch
 
@@ -128,7 +123,6 @@ fun ResultScreen(
                     fontFamily = FontFamily(Font(R.font.montserrat)),
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier
-                        .padding(8.dp)
                         .weight(1f),
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
@@ -143,7 +137,6 @@ fun ResultScreen(
                         fontSize = 12.sp,
                         fontFamily = FontFamily(Font(R.font.montserrat)),
                         fontWeight = FontWeight.Bold,
-                        modifier = Modifier.padding(8.dp),
                         maxLines = 1
                     )
                 }
@@ -169,52 +162,12 @@ fun LoadingScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         ShimmerGreetingsCard()
-
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 16.dp, top = 8.dp, end = 16.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Box(
-                modifier = Modifier.width(160.dp)
-            ) {
-                ShimmerText()
-            }
-
-            Box(
-                modifier = Modifier.width(100.dp)
-            ) {
-                ShimmerText()
-            }
-        }
-        Row(
-            modifier = Modifier.fillMaxWidth().padding(start = 8.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            ShimmerMealCard()
-            ShimmerMealCard()
-            ShimmerMealCard()
-        }
-
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            ShimmerMealCard()
-            ShimmerMealCard()
-            ShimmerMealCard()
-        }
-
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            ShimmerMealCard()
-            ShimmerMealCard()
-            ShimmerMealCard()
-        }
+        Spacer(modifier = Modifier.padding(16.dp))
+        ShimmerMealRow()
+        Spacer(modifier = Modifier.padding(4.dp))
+        ShimmerMealRow()
+        Spacer(modifier = Modifier.padding(4.dp))
+        ShimmerMealRow()
     }
 }
 
