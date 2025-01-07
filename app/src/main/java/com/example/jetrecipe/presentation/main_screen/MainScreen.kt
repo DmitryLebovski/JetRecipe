@@ -46,6 +46,7 @@ import com.example.jetrecipe.reusable_components.ShimmerGreetingsCard
 import com.example.jetrecipe.reusable_components.ShimmerMealRow
 import com.example.jetrecipe.utils.ModalContentType
 import com.example.jetrecipe.utils.RecipeUiState
+import com.example.jetrecipe.utils.Routes.MEAL_LIST_SCREEN
 import kotlinx.coroutines.launch
 
 @Composable
@@ -142,7 +143,9 @@ fun ResultScreen(
                 )
 
                 TextButton(
-                    onClick = {}
+                    onClick = {
+                        navController.navigate("${MEAL_LIST_SCREEN}/${category.category}")
+                    }
                 ) {
                     Text(
                         text = "Посмотреть все",
@@ -154,7 +157,9 @@ fun ResultScreen(
                 }
             }
             LazyRow(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 12.dp),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 items(mealsByCategory[category.category] ?: emptyList()) { meal ->

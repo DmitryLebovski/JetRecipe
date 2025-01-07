@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -14,16 +16,20 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.navArgument
 import com.example.jetrecipe.domain.model.User
 import com.example.jetrecipe.presentation.login.LoginScreen
 import com.example.jetrecipe.presentation.main_screen.MainScreen
+import com.example.jetrecipe.presentation.meal_list.MealListScreen
 import com.example.jetrecipe.tools.BottomBar
 import com.example.jetrecipe.ui.theme.JetRecipeTheme
 import com.example.jetrecipe.utils.Routes.LOGIN_SCREEN
 import com.example.jetrecipe.utils.Routes.MAIN_SCREEN
+import com.example.jetrecipe.utils.Routes.MEAL_LIST_SCREEN
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
@@ -70,6 +76,11 @@ class MainActivity : ComponentActivity() {
                         NavHost(
                             navController = navController,
                             startDestination = startDestination,
+                            enterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Left, tween(200))},
+                            exitTransition = { slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Right, tween(200))},
+                            popEnterTransition =  { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Left, tween(200))},
+                            popExitTransition = { slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Right, tween(200))},
+
                             modifier = Modifier.padding(paddingValues)
                         ) {
                             composable(LOGIN_SCREEN) {
@@ -94,6 +105,13 @@ class MainActivity : ComponentActivity() {
                                         }
                                     }
                                 )
+                            }
+                            composable(
+                                route = "${MEAL_LIST_SCREEN}/{category}",
+                                arguments = listOf(navArgument("category") { type = NavType.StringType })
+                            ) { backStackEntry ->
+                                val category = backStackEntry.arguments?.getString("category") ?: ""
+                                MealListScreen(category)
                             }
                         }
                     }

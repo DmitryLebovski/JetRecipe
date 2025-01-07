@@ -14,4 +14,5 @@
     <string name="empty_user_data">Данные о пользователе отсутствуют</string>
     <string name="search">Поиск</string>
     <string name="favorite">Избранное</string>
+    <string name="recipe_category">Рецепты категории</string>
 </resources>
