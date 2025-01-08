@@ -32,8 +32,6 @@ fun ProfileScreen(
     user: User?,
     onSignOut: () -> Unit
 ) {
-    val context = LocalContext.current
-
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,

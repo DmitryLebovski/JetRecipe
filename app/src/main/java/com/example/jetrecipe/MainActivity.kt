@@ -111,7 +111,10 @@ class MainActivity : ComponentActivity() {
                                 arguments = listOf(navArgument("category") { type = NavType.StringType })
                             ) { backStackEntry ->
                                 val category = backStackEntry.arguments?.getString("category") ?: ""
-                                MealListScreen(category)
+                                MealListScreen(
+                                    navController = navController,
+                                    category = category
+                                )
                             }
                         }
                     }
