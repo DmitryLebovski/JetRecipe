@@ -35,23 +35,36 @@ class MealDetailViewModel @Inject constructor(
             tags = "null",
             youtubeURL = "null",
             dataModified = "null",
-            ingredients = emptyList()
+            ingredients = emptyList(),
+            isFavorite = false
         )
     )
     val details: StateFlow<MealDetail> = _details
 
-    fun loadMealDetails(id: Int) {
+    fun loadMealDetails(id: Int, userId: String) {
         viewModelScope.launch {
             recipeUiState = RecipeUiState.Loading
-            recipeUiState = try {
+            try {
                 val mealDetails = repository.getMealDetails(id)
-                _details.value = mealDetails
-                RecipeUiState.Success(mealDetails.meal)
+                checkIfFavorite(id, userId) { isFavorite ->
+                    _details.value = mealDetails.copy(isFavorite = isFavorite)
+                    recipeUiState = RecipeUiState.Success(mealDetails.meal)
+                }
             } catch (e: IOException) {
-                RecipeUiState.Error
+                recipeUiState = RecipeUiState.Error
             } catch (e: HttpException) {
-                RecipeUiState.Error
+                recipeUiState = RecipeUiState.Error
             }
         }
+    }
+
+    fun toggleFavorite(mealDetail: MealDetail, isFavorite: Boolean, userId: String) {
+        if (isFavorite) {
+            saveFavoriteMeal(mealDetail, userId)
+        } else {
+            removeFavoriteMeal(mealDetail.mealID, userId)
+        }
+
+        _details.value = _details.value.copy(isFavorite = isFavorite)
     }
 }

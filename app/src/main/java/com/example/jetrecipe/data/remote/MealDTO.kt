@@ -151,6 +151,7 @@ fun MealDetailDto.toDomain(): MealDetail {
         youtubeURL = strYoutube ?: "",
         dataModified = dateModified ?: "",
         ingredients = ingredientsList,
+        isFavorite = false
     )
 }
 

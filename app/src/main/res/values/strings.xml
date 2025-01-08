@@ -15,4 +15,5 @@
     <string name="search">Поиск</string>
     <string name="favorite">Избранное</string>
     <string name="recipe_category">Рецепты категории</string>
+    <string name="favorite_meals">Избранные блюда</string>
 </resources>

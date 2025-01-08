@@ -12,5 +12,6 @@ data class MealDetail (
     val tags: String,
     val youtubeURL: String,
     val dataModified: String,
-    val ingredients: List<MealIngredient> = emptyList()
+    val ingredients: List<MealIngredient> = emptyList(),
+    val isFavorite: Boolean
 )

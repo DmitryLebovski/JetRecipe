@@ -24,9 +24,11 @@ import androidx.navigation.navArgument
 import com.example.jetrecipe.domain.model.User
 import com.example.jetrecipe.presentation.login.LoginScreen
 import com.example.jetrecipe.presentation.main_screen.MainScreen
+import com.example.jetrecipe.presentation.meal_favorite.MealFavoriteScreen
 import com.example.jetrecipe.presentation.meal_list.MealListScreen
 import com.example.jetrecipe.tools.BottomBar
 import com.example.jetrecipe.ui.theme.JetRecipeTheme
+import com.example.jetrecipe.utils.Routes.FAVORITE_SCREEN
 import com.example.jetrecipe.utils.Routes.LOGIN_SCREEN
 import com.example.jetrecipe.utils.Routes.MAIN_SCREEN
 import com.example.jetrecipe.utils.Routes.MEAL_LIST_SCREEN
@@ -68,7 +70,8 @@ class MainActivity : ComponentActivity() {
 
                     Scaffold (
                         bottomBar = {
-                            if (currentBackStackEntry.value?.destination?.route == MAIN_SCREEN) {
+                            val currentRoute = currentBackStackEntry.value?.destination?.route
+                            if (currentRoute == MAIN_SCREEN || currentRoute == FAVORITE_SCREEN) {
                                 BottomBar(navController)
                             }
                         }
@@ -105,6 +108,9 @@ class MainActivity : ComponentActivity() {
                                         }
                                     }
                                 )
+                            }
+                            composable(FAVORITE_SCREEN) {
+                                MealFavoriteScreen()
                             }
                             composable(
                                 route = "${MEAL_LIST_SCREEN}/{category}",

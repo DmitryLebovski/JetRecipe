@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import com.example.jetrecipe.R
+import com.example.jetrecipe.utils.Routes.FAVORITE_SCREEN
 import com.example.jetrecipe.utils.Routes.MAIN_SCREEN
 
 @Composable
@@ -24,17 +25,15 @@ fun BottomBar(navController: NavController) {
         )
         NavigationBarItem(
             icon = { Icon(Icons.Default.Search, contentDescription = "Settings") },
-            label = { Text(stringResource(R.string.search)) },
             selected = false,
             enabled = false,
             onClick = { }
         )
         NavigationBarItem(
             icon = { Icon(Icons.Default.Favorite, contentDescription = "Favorite") },
-            label = { Text(stringResource(R.string.favorite)) },
-            selected = false,
-            enabled = false,
-            onClick = { }
+            selected = navController.currentDestination?.route == FAVORITE_SCREEN,
+            enabled = true,
+            onClick = { navController.navigate(FAVORITE_SCREEN) }
         )
     }
 }
