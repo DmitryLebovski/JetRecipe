@@ -10,7 +10,7 @@
 ## TODO(Global):
 * ~~Full category meal lists~~
 * Search
-* Favorites (store in Firebase)
+* ~~Favorites (store in Firebase)~~
 
 ## Stack:
 * Jetpack Compose
